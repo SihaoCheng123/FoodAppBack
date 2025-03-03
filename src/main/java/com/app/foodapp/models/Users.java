@@ -46,7 +46,7 @@ public class Users {
             //vincular con las primary keys
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    @JsonManagedReference
+
     private Set<Roles> roles = new HashSet<>();
 
     public Long getId() {
