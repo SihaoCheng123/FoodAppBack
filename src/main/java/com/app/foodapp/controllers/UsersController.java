@@ -5,13 +5,10 @@ import com.app.foodapp.dto.LoginRequest;
 import com.app.foodapp.dto.LoginResponse;
 import com.app.foodapp.models.Users;
 import com.app.foodapp.services.UsersService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -50,6 +47,12 @@ public class UsersController {
     public ResponseEntity<Object> login(@RequestBody LoginRequest credentials){
         ApiDelivery<LoginResponse> response = this.usersService.login(credentials.getEmail(), credentials.getPassword());
        return ResponseEntity.status(response.getStatus()).body(response);
+    }
+
+    @PostMapping("/update/{id}")
+    public ResponseEntity<Users> updateUser(@RequestBody Users users, @PathVariable Long id){
+        Users updateUser = this.usersService.updateUser(users, id);
+        return ResponseEntity.ok(updateUser);
     }
 
 }

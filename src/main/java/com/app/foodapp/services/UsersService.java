@@ -60,7 +60,7 @@ public class UsersService {
         userOptional.setImage(user.getImage());
 
         if (user.getPassword() != null && user.getPassword().isEmpty()){
-            userOptional.setPassword(user.getPassword());
+            userOptional.setPassword(this.passwordEncoder.encode(user.getPassword()));
         }
 
         return this.userRepository.save(userOptional);

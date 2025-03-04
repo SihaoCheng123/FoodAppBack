@@ -47,7 +47,7 @@ public class ProductController {
             return ResponseEntity.badRequest().body(null); //BadRequest es error 400
         }
         try{
-            Files .createDirectories(Paths.get(UPLOAD_DIR)); //Si no existe, lo crea
+            Files.createDirectories(Paths.get(UPLOAD_DIR)); //Si no existe, lo crea
 
             //Subo un archivo que se llama archivo1.png
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename(); //modificar el nombre del archivo - 0832423_archivo1.png
